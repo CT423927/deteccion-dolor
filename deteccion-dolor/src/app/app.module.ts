@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { PacientesComponent } from './pacientes/pacientes.component';
 import { AvisosComponent } from './avisos/avisos.component';
+import { TarjetaResumenComponent } from './tarjeta-resumen/tarjeta-resumen.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InicioComponent,
     PacientesComponent,
-    AvisosComponent
+    AvisosComponent,
+    TarjetaResumenComponent
   ],
   imports: [
     BrowserModule,
