@@ -13,16 +13,16 @@ export class InicioComponent implements OnInit {
   ngOnInit(): void {
   }
    
-    customOptions: OwlOptions = {
-      stagePadding: 60,
-      loop: false,
-      mouseDrag: true,
-      touchDrag: true,
-      pullDrag: true,
-      dots: false,
-      margin: 30,
-      navSpeed: 700,
-      nav: false,
-      items:4
-    }
+  customOptions: OwlOptions = {
+    stagePadding: 110,
+    loop: false,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    dots: false,
+    margin: 50,
+    navSpeed: 700,
+    nav: false,
+    items:4
+  }
 }

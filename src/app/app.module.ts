@@ -13,7 +13,11 @@ import { AlertaComponent } from './alerta/alerta.component';
 import { PacienteComponent } from './paciente/paciente.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CarouselModule } from 'ngx-owl-carousel-o'; 
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { WebcamComponent } from './webcam/webcam.component';
+import { MicroComponent } from './micro/micro.component';
+import { MovimientoComponent } from './movimiento/movimiento.component';
+import { PulseraComponent } from './pulsera/pulsera.component'; 
 
 @NgModule({
   declarations: [
@@ -24,6 +28,10 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     TarjetaResumenComponent,
     AlertaComponent,
     PacienteComponent,
+    WebcamComponent,
+    MicroComponent,
+    MovimientoComponent,
+    PulseraComponent
     
   ],
   imports: [
