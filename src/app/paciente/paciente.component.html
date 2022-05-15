@@ -1,19 +1,73 @@
-<p>paciente works!</p>
-<p>Showing product details for product: {{id}}</p>
-
 <div class="container">
+  <br>
     <div class="card-deck">
         <div class="card">
             <div class="card-body" style="display: inline-block;">
-                <h1 class="card-title">Antonio Calderón López</h1>
+                <h1 class="card-title">{{currentPaciente.nombre}}</h1>
                 <br>
-                <h5 class="card-title">Año de nacimiento</h5>
-                <h5 class="card-title">Sexo</h5>
-                <h5 class="card-title">Contacto</h5>
-                <h5 class="card-title">Fecha ingreso</h5>
-                <h5 class="card-title">Fecha alta</h5>
-                <h5 class="card-title">Año de nacimiento</h5>
-                <h5 class="card-title">Monitorización</h5>
+
+                  <div class="row">
+                    <div class="col-sm">
+                      <h5 class="card-title">Año de nacimiento</h5>
+                    </div>
+                    <div class="col-sm">
+                      {{currentPaciente.fechaNacimiento}}
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm">
+                      <h5 class="card-title">Sexo</h5> 
+                    </div>
+                    <div class="col-sm">
+                      {{currentPaciente.sexo}}
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm">
+                      <h5 class="card-title">Contacto</h5> 
+                    </div>
+                    <div class="col-sm">
+                      {{currentPaciente.contacto}}
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm">
+                      <h5 class="card-title">Fecha ingreso</h5> 
+                    </div>
+                    <div class="col-sm">
+                      {{currentPaciente.fechaIngreso}}
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm">
+                      <h5 class="card-title">Fecha alta</h5>
+                    </div>
+                    <div class="col-sm">
+                      {{currentPaciente.fechaAlta}}
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm">
+                      <h5 class="card-title">Monitorización</h5>
+                    </div>
+                    <div class="col-sm">
+                      <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                      </div>
+                    </div>
+                  </div>
+                 
+                
+                
+                
+                 
+                
+                
             </div>
         </div>
         <div class="card">
@@ -27,118 +81,237 @@
     </div>
 </div>
 <br><br><br>
+
+
 <div class="container">
   <div class="caja-ancha">
-      <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
-        <li class="nav-item" role="presentation">
-          <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Vista parámetros</button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Vista escala Abbey</button>
-        </li>
-      </ul>
-    
 
-        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-          <div>
-            <owl-carousel-o [options]="customOptions">
-              <ng-template carouselSlide>
-                <div class="caja" style="max-width: 18rem;">
+    <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Vista parámetros</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Vista escala Abbey</button>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+          <br>
+          <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+              <div class="card">
+                <div class="card-body" style="display: inline-block;">
                   <div class="widget-49">
                     <div class="widget-49-title-wrapper">
                         <div class="widget-49-date-warning">
-                            <span class="widget-49-icon"><i class="bi bi-person-fill"></i></span>
+                            <span class="widget-49-icon"><i class="bi bi-person-bounding-box"></i></span>
                         </div>
                         <div class="widget-49-meeting-info">
-                            <span class="widget-49-pro-title">Frecuencia cardíaca</span>
+                            <span class="widget-49-pro-title">Expresión facial</span>
                         </div>
 
                     </div>
                   </div>
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                    Launch demo modal
+                    Ver más
                   </button>
-                </div>
-              </ng-template>  
-          
-              <ng-template carouselSlide>
-                <div class="caja" style="max-width: 18rem;">
+                </div> 
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card">
+                <div class="card-body" style="display: inline-block;">
                   <div class="widget-49">
                     <div class="widget-49-title-wrapper">
                         <div class="widget-49-date-warning">
-                            <span class="widget-49-icon"><i class="bi bi-people-fill"></i></span>
+                            <span class="widget-49-icon"><i class="bi bi-mic-fill"></i></span>
                         </div>
                         <div class="widget-49-meeting-info">
-                            <span class="widget-49-pro-title">800</span>
-                            <span class="widget-49-meeting-time">Pacientes totales</span>
+                            <span class="widget-49-meeting-time">Vocalización</span>
                         </div>
-                    </div>
+                    </div>  
                   </div>
-
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#microModal">
-                    Micro
-                  </button>
-
                 </div>
-              </ng-template> 
-          
-              <ng-template carouselSlide>
-                <div class="caja" style="max-width: 18rem;">
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card">
+                <div class="card-body" style="display: inline-block;">
                   <div class="widget-49">
                     <div class="widget-49-title-wrapper">
                         <div class="widget-49-date-warning">
-                            <span class="widget-49-icon"><i class="bi bi-bell-fill"></i></span>
+                            <span class="widget-49-icon"><i class="bi bi-exclamation-lg"></i></span>
                         </div>
                         <div class="widget-49-meeting-info">
-                            <span class="widget-49-pro-title">3</span>
-                            <span class="widget-49-meeting-time">Detección movimiento</span>
+                            <span class="widget-49-meeting-time">Cambios de lenguaje corporal</span>
                         </div>
                     </div>
                   </div>
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#movimientoModal">
-                    Movimiento
+                    Ver más
                   </button>
                 </div>
-              </ng-template>  
-          
-              <ng-template carouselSlide>
-                <div class="caja" style="max-width: 18rem;">
+              </div>  
+            </div>
+
+            <div class="col">
+              <div class="card">
+                <div class="card-body" style="display: inline-block;">
                   <div class="widget-49">
                     <div class="widget-49-title-wrapper">
                         <div class="widget-49-date-warning">
-                            <span class="widget-49-icon"><i class="bi bi-door-open-fill"></i></span>
+                            <span class="widget-49-icon"><i class="bi bi-heart-pulse-fill"></i></span>
                         </div>
                         <div class="widget-49-meeting-info">
-                            <span class="widget-49-pro-title">67</span>
-                            <span class="widget-49-meeting-time">Altas</span>
+                            <span class="widget-49-meeting-time">Cambios fisiologicos</span>
                         </div>
                     </div>
                   </div>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ritmoModal">
+                    Ver más
+                  </button>
                 </div>
-              </ng-template> 
-          
-              <ng-template carouselSlide>
-                <div class="caja" style="max-width: 18rem;">
+              </div> 
+            </div>
+
+            <div class="col">
+              <div class="card">
+                <div class="card-body" style="display: inline-block;">
                   <div class="widget-49">
                     <div class="widget-49-title-wrapper">
                         <div class="widget-49-date-warning">
-                            <span class="widget-49-icon"><i class="bi bi-activity"></i></span>
+                            <span class="widget-49-icon"><i class="bi bi-emoji-angry-fill"></i></span>
                         </div>
                         <div class="widget-49-meeting-info">
-                            <span class="widget-49-pro-title">6</span>
-                            <span class="widget-49-meeting-time">Monitorizados</span>
+                            <span class="widget-49-pro-title">Cambios de comportamiento</span>
                         </div>
+
                     </div>
                   </div>
-                </div>
-              </ng-template> 
-            </owl-carousel-o>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cambiosComportamiento">
+                    Ver más
+                  </button>
+                </div> 
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card">
+                <div class="card-body" style="display: inline-block;">
+                  <div class="widget-49">
+                    <div class="widget-49-title-wrapper">
+                        <div class="widget-49-date-warning">
+                            <span class="widget-49-icon"><i class="bi bi-bandaid-fill"></i></span>
+                        </div>
+                        <div class="widget-49-meeting-info">
+                            <span class="widget-49-pro-title">Cambios físicos</span>
+                        </div>
+
+                    </div>
+                  </div>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cambiosFisicos">
+                    Ver más
+                  </button>
+                </div> 
+              </div>
+            </div>
+        
           </div>
         </div>
-        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
-        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
-      </div>
 
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+          <br>
+              <table class="table table-bordered" style="text-align: center; vertical-align: middle;">
+                <thead>
+                  <tr>
+                    <th scope="col">Item</th>
+                    <th scope="col">0</th>
+                    <th scope="col">1</th>
+                    <th scope="col">2</th>
+                    <th scope="col">3</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Vocalización</th>
+                    <td>Ninguna</td>
+                    <td>Lamentos, gruñidos, llantos ocasionales</td>
+                    <td>Lamentos, gruñidos, llantos frecuentes</td>
+                    <td>Jacob</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Expresión facial</th>
+                    <td class="table-success">Relajada</td>
+                    <td class="table-warning">Expresión tensa, fruncida, lamentándose, aspecto asustado leve</td>
+                    <td style=" background-color:#ffd9b3">Expresión tensa, fruncida, lamentándose, aspecto asustado moderado</td>
+                    <td class="table-danger">Expresión tensa, fruncida, lamentándose, aspecto asustado grave</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Cambios de comportamiento</th>
+                    <td>No hay cambios de comportamiento</td>
+                    <td>Aumento de confusión, rehúsa comer, alteración de patrones usuales leve</td>
+                    <td>Aumento de confusión, rehúsa comer, alteración de patrones usuales moderado</td>
+                    <td>Aumento de confusión, rehúsa comer, alteración de patrones usuales grave</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Cambios de lenguaje corporal</th>
+                    <td>Tranquilo</td>
+                    <td>Movimientos ocasionales</td>
+                    <td>Mvimientos frecuentes</td>
+                    <td>Inquieto</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Cambios fisiologicos</th>
+                    <td>Temperatura, pulso, tensión sanguínea normales</td>
+                    <td>Jacob</td>
+                    <td>Jacob</td>
+                    <td>Temperatura, pulso, tensión sanguínea fuera límites</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Cambios físicos</th>
+                    <td>Ninguno</td>
+                    <td>Erosiones, lesiones previas, deformidades, contracturas, áreas de presión leves</td>
+                    <td>Erosiones, lesiones previas, deformidades, contracturas, áreas de presión moderado</td>
+                    <td>Erosiones, lesiones previas, deformidades, contracturas, áreas de presión grave</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <table class="table table-bordered">
+                <tbody>
+                  <tr style="text-align: center; vertical-align: middle;">
+                    <th scope="row">Total</th>
+                    <td class="table-success">
+                      Sin dolor 
+                      <br>
+                      <b>0-2</b>
+                    </td>
+                    <td class="table-warning">
+                      Leve
+                      <br>
+                      <b>3-7</b>
+                    </td>
+                    <td style=" background-color:#ffd9b3">
+                      Moderado
+                      <br>
+                      <b>8-13</b>
+                    </td>
+                    <td class="table-danger">
+                      Severo
+                      <br>
+                      <b>+14</b>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>  
+    </div>
+
+         
+  </div>
 </div>
 
 <div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -167,7 +340,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <app-micro></app-micro>
+       <!--  <app-micro></app-micro> -->
       </div>
     </div>
   </div>
@@ -184,6 +357,56 @@
       </div>
       <div class="modal-body">
         <app-movimiento></app-movimiento>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade bd-example-modal-lg" id="ritmoModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Ritmo cardíaco</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-pulsera></app-pulsera>
+        <app-cambios-comportamiento></app-cambios-comportamiento>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade bd-example-modal-lg" id="cambiosComportamiento" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Cambios de comportamiento</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-cambios-comportamiento></app-cambios-comportamiento>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade bd-example-modal-lg" id="cambiosFisicos" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Cambios de comportamiento</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-cambios-fisico></app-cambios-fisico>
+        <app-cambios-comportamiento></app-cambios-comportamiento>
       </div>
     </div>
   </div>

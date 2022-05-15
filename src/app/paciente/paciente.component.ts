@@ -1,9 +1,11 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
+import { Component, Inject, Input, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
+import { Paciente } from '../models/paciente.model';
+import { MongoService } from '../services/mongo.service';
 
 
 declare const scan: any;
@@ -18,8 +20,20 @@ declare const scan: any;
   providedIn: 'root'
 })
 
+
+
 export class PacienteComponent implements OnInit {
 
+  @Input() currentPaciente: Paciente = {
+    nombre: '',
+    fechaNacimiento: null,
+    sexo: '',
+    contacto: '',
+    fechaIngreso: null,
+    fechaAlta: null,
+    ingresado: null,
+  };
+  
   listExpressions: any = [];
   id!: number;
   private sub: any;
@@ -28,16 +42,23 @@ export class PacienteComponent implements OnInit {
     scan();
   }
   
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private mongoService: MongoService,) {}
 
 
   ngOnInit() {
 
-    this.sub = this.route.params.subscribe(params => {
-       this.id = +params['id']; // (+) converts string 'id' to a number
+    this.getTutorial(this.route.snapshot.params["id"]);
+  }
 
-       // In a real app: dispatch action to load the details here.
-    });
+  getTutorial(id: string): void {
+    this.mongoService.get(id)
+      .subscribe({
+        next: (data) => {
+          this.currentPaciente = data;
+          console.log(data);
+        },
+        error: (e) => console.error(e)
+      });
   }
 
 
