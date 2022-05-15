@@ -1,12 +1,10 @@
 #camStream, #canvas {
     left: 0;
     opacity: 0;
-    position: fixed;
     top: 0;
   }
   
   #canvasFinal {
-    display: block;
     margin: 0 auto;
   }
 
@@ -21,7 +19,6 @@
 }
 
 #canvas {
-	position: absolute;
 	opacity: 1;
 	top: 0;
 	left: 0;

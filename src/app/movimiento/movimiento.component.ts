@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+declare const MotionDetector: any;
 @Component({
   selector: 'app-movimiento',
   templateUrl: './movimiento.component.html',
@@ -20,7 +21,6 @@ export class MovimientoComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    this.loadExternalScript('assets/movimiento/global.js')
     this.loadExternalScript('assets/movimiento/MotionDetector/WebCamCapture.js')
     this.loadExternalScript('assets/movimiento/MotionDetector/ImageCompare.js')
     this.loadExternalScript('assets/movimiento/MotionDetector/Core.js')

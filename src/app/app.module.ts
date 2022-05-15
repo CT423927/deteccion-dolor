@@ -18,6 +18,10 @@ import { WebcamComponent } from './webcam/webcam.component';
 import { MicroComponent } from './micro/micro.component';
 import { MovimientoComponent } from './movimiento/movimiento.component';
 import { PulseraComponent } from './pulsera/pulsera.component'; 
+import { HttpClientModule } from '@angular/common/http';
+import { CambiosComportamientoComponent } from './cambios-comportamiento/cambios-comportamiento.component';
+import { CambiosFisicoComponent } from './cambios-fisico/cambios-fisico.component';
+
 
 @NgModule({
   declarations: [
@@ -31,11 +35,14 @@ import { PulseraComponent } from './pulsera/pulsera.component';
     WebcamComponent,
     MicroComponent,
     MovimientoComponent,
-    PulseraComponent
+    PulseraComponent,
+    CambiosComportamientoComponent,
+    CambiosFisicoComponent
     
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     NgxBootstrapIconsModule,
     BrowserAnimationsModule,
