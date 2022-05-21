@@ -21,7 +21,7 @@ import { PulseraComponent } from './pulsera/pulsera.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CambiosComportamientoComponent } from './cambios-comportamiento/cambios-comportamiento.component';
 import { CambiosFisicoComponent } from './cambios-fisico/cambios-fisico.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -46,7 +46,9 @@ import { CambiosFisicoComponent } from './cambios-fisico/cambios-fisico.componen
     AppRoutingModule,
     NgxBootstrapIconsModule,
     BrowserAnimationsModule,
-    CarouselModule
+    CarouselModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

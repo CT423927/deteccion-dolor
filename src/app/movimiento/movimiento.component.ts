@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 declare const MotionDetector: any;
 @Component({
@@ -8,7 +9,7 @@ declare const MotionDetector: any;
 })
 export class MovimientoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   public loadExternalScript(url: string) {
     const body = <HTMLDivElement> document.body;
