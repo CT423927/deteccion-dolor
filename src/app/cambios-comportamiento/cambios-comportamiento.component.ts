@@ -1,20 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { ComunicacionComponentesService } from '../comunicacion-componentes.service';
 
 @Component({
   selector: 'app-cambios-comportamiento',
   templateUrl: './cambios-comportamiento.component.html',
   styleUrls: ['./cambios-comportamiento.component.scss']
 })
+
 export class CambiosComportamientoComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private servicioCom:ComunicacionComponentesService) { }
 
-  valorCambioFisico;
+  valorCambioComportamiento;
 
   cambioComportamiento = new FormGroup({
-    cambioFisico: new FormControl('', Validators.required)
+    cambioComportamiento: new FormControl('', Validators.required)
   });
     
   get f(){
@@ -22,13 +24,17 @@ export class CambiosComportamientoComponent implements OnInit {
   }
     
   submit(){
-    this.valorCambioFisico = this.cambioComportamiento.value;
-    this.http.post<any>('http://localhost:8080/cambiosFisicos',  {cambioFisico: this.valorCambioFisico} ).subscribe(data => {
+    this.valorCambioComportamiento = this.cambioComportamiento.value;
+    console.log(this.valorCambioComportamiento);
+    this.servicioCom.disparadorEnviar.emit({
+      data:this.valorCambioComportamiento 
+    });
+    this.http.post<any>('http://localhost:8080/cambiosComportamiento',  {cambioComportamiento: this.valorCambioComportamiento} ).subscribe(data => {
       next: (response) => console.log(response)
     });
   }
   
-  changeCambioFisico(e) {
+  changeCambioComportamiento(e) {
     console.log(e.target.value);
   }
 

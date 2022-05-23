@@ -84,6 +84,7 @@
 
 
 <div class="container">
+  {{this.cambiosFisicos}}
   <div class="caja-ancha">
 
     <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
@@ -194,6 +195,7 @@
                         </div>
                         <div class="widget-49-meeting-info">
                             <span class="widget-49-pro-title">Cambios físicos</span>
+                            {{this.cambiosFisicos}}
                         </div>
                     </div>
                   </div>
@@ -219,45 +221,45 @@
                 <tbody>
                   <tr>
                     <th scope="row">Vocalización</th>
-                    <td>Ninguna</td>
-                    <td>Lamentos, gruñidos, llantos ocasionales</td>
-                    <td>Lamentos, gruñidos, llantos frecuentes</td>
-                    <td>Jacob</td>
+                    <td [ngStyle]="vocalizacion == 0 && {'background-color': '#C8E6C9'}">Ninguna</td>
+                    <td [ngStyle]="vocalizacion == 1 && {'background-color': '#FFF9C4'}"> Lamentos, gruñidos, llantos ocasionales</td>
+                    <td [ngStyle]="vocalizacion == 2 && {'background-color': '#FFE0B2'}">Lamentos, gruñidos, llantos frecuentes</td>
+                    <td [ngStyle]="vocalizacion == 3 && {'background-color': '#FFCDD2'}">Jacob</td>
                   </tr>
                   <tr>
                     <th scope="row">Expresión facial</th>
-                    <td class="table-success">Relajada</td>
-                    <td class="table-warning">Expresión tensa, fruncida, lamentándose, aspecto asustado leve</td>
-                    <td style=" background-color:#ffd9b3">Expresión tensa, fruncida, lamentándose, aspecto asustado moderado</td>
-                    <td class="table-danger">Expresión tensa, fruncida, lamentándose, aspecto asustado grave</td>
+                    <td [ngStyle]="expresionFacial == 0 && {'background-color': '#C8E6C9'}">Relajada</td>
+                    <td [ngStyle]="expresionFacial == 1 && {'background-color': '#FFF9C4'}">Expresión tensa, fruncida, lamentándose, aspecto asustado leve</td>
+                    <td [ngStyle]="expresionFacial == 2 && {'background-color': '#FFE0B2'}">Expresión tensa, fruncida, lamentándose, aspecto asustado moderado</td>
+                    <td [ngStyle]="expresionFacial == 3 && {'background-color': '#FFCDD2'}">Expresión tensa, fruncida, lamentándose, aspecto asustado grave</td>
                   </tr>
                   <tr>
                     <th scope="row">Cambios de comportamiento</th>
-                    <td>No hay cambios de comportamiento</td>
-                    <td>Aumento de confusión, rehúsa comer, alteración de patrones usuales leve</td>
-                    <td>Aumento de confusión, rehúsa comer, alteración de patrones usuales moderado</td>
-                    <td>Aumento de confusión, rehúsa comer, alteración de patrones usuales grave</td>
+                    <td [ngStyle]="cambiosComportamiento == 0 && {'background-color': '#C8E6C9'}">No hay cambios de comportamiento</td>
+                    <td [ngStyle]="cambiosComportamiento == 1 && {'background-color': '#FFF9C4'}">Aumento de confusión, rehúsa comer, alteración de patrones usuales leve</td>
+                    <td [ngStyle]="cambiosComportamiento == 2 && {'background-color': '#FFE0B2'}">Aumento de confusión, rehúsa comer, alteración de patrones usuales moderado</td>
+                    <td [ngStyle]="cambiosComportamiento == 3 && {'background-color': '#FFCDD2'}">Aumento de confusión, rehúsa comer, alteración de patrones usuales grave</td>
                   </tr>
                   <tr>
                     <th scope="row">Cambios de lenguaje corporal</th>
-                    <td>Tranquilo</td>
-                    <td>Movimientos ocasionales</td>
-                    <td>Mvimientos frecuentes</td>
-                    <td>Inquieto</td>
+                    <td [ngStyle]="cambiosLenguajeCorporal == 0 && {'background-color': '#C8E6C9'}">Tranquilo</td>
+                    <td [ngStyle]="cambiosLenguajeCorporal == 1 && {'background-color': '#FFF9C4'}">Movimientos ocasionales</td>
+                    <td [ngStyle]="cambiosLenguajeCorporal == 2 && {'background-color': '#FFE0B2'}">Mvimientos frecuentes</td>
+                    <td [ngStyle]="cambiosLenguajeCorporal == 3 && {'background-color': '#FFCDD2'}">Inquieto</td>
                   </tr>
                   <tr>
                     <th scope="row">Cambios fisiologicos</th>
-                    <td>Temperatura, pulso, tensión sanguínea normales</td>
-                    <td>Jacob</td>
-                    <td>Jacob</td>
-                    <td>Temperatura, pulso, tensión sanguínea fuera límites</td>
+                    <td [ngStyle]="cambiosFisicologicos == 0 && {'background-color': '#C8E6C9'}">Temperatura, pulso, tensión sanguínea normales</td>
+                    <td [ngStyle]="cambiosFisicologicos == 1 && {'background-color': '#FFF9C4'}">Jacob</td>
+                    <td [ngStyle]="cambiosFisicologicos == 2 && {'background-color': '#FFE0B2'}">Jacob</td>
+                    <td [ngStyle]="cambiosFisicologicos == 3 && {'background-color': '#FFCDD2'}">Temperatura, pulso, tensión sanguínea fuera límites</td>
                   </tr>
                   <tr>
                     <th scope="row">Cambios físicos</th>
-                    <td>Ninguno</td>
-                    <td>Erosiones, lesiones previas, deformidades, contracturas, áreas de presión leves</td>
-                    <td>Erosiones, lesiones previas, deformidades, contracturas, áreas de presión moderado</td>
-                    <td>Erosiones, lesiones previas, deformidades, contracturas, áreas de presión grave</td>
+                    <td [ngStyle]="cambiosFisicos == 0 && {'background-color': '#C8E6C9'}">Ninguno</td>
+                    <td [ngStyle]="cambiosFisicos == 1 && {'background-color': '#FFF9C4'}">Erosiones, lesiones previas, deformidades, contracturas, áreas de presión leves</td>
+                    <td [ngStyle]="cambiosFisicos == 2 && {'background-color': '#FFE0B2'}">Erosiones, lesiones previas, deformidades, contracturas, áreas de presión moderado</td>
+                    <td [ngStyle]="cambiosFisicos == 3 && {'background-color': '#FFCDD2'}">Erosiones, lesiones previas, deformidades, contracturas, áreas de presión grave</td>
                   </tr>
                 </tbody>
               </table>
@@ -266,22 +268,22 @@
                 <tbody>
                   <tr style="text-align: center; vertical-align: middle;">
                     <th scope="row">Total</th>
-                    <td class="table-success">
+                    <td [ngStyle]="puntuacionTotal <= 2 && {'background-color': '#C8E6C9'}">
                       Sin dolor 
                       <br>
                       <b>0-2</b>
                     </td>
-                    <td class="table-warning">
+                    <td [ngStyle]="puntuacionTotal >= 3 && puntuacionTotal <= 7 && {'background-color': '#FFF9C4'}">
                       Leve
                       <br>
                       <b>3-7</b>
                     </td>
-                    <td style=" background-color:#ffd9b3">
+                    <td [ngStyle]="puntuacionTotal >= 8 && puntuacionTotal <= 13 && {'background-color': '#FFE0B2'}">
                       Moderado
                       <br>
                       <b>8-13</b>
                     </td>
-                    <td class="table-danger">
+                    <td [ngStyle]="puntuacionTotal >= 14 && {'background-color': '#FFCDD2'}">
                       Severo
                       <br>
                       <b>+14</b>
