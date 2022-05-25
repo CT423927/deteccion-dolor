@@ -1,5 +1,4 @@
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
     "analytics": "8f2810de-ee54-4690-aa94-6852b21107a5"
   },
@@ -35,12 +34,22 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.scss"
-            ],
+              "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css",
+              "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css",
+              "src/styles.scss" 
+              
+            ], 
             "scripts": [
-              "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/@popperjs/core/dist/umd/popper.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+              "./node_modules/jquery/dist/jquery.min.js",
+              "./node_modules/popper.js/dist/umd/popper.min.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "src/assets/movimiento/global.js",
+              "src/assets/movimiento/MotionDetector/WebCamCapture.js",
+              "src/assets/movimiento/MotionDetector/ImageCompare.js",
+              "src/assets/movimiento/MotionDetector/Core.js",
+              "src/assets/movimiento/main.js",
+              "src/assets/webapp.bundle.js"
+
             ]
           },
           "configurations": {

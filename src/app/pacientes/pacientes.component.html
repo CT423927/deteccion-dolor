@@ -1,1 +1,29 @@
-<p>pacientes works!</p>
+<div class="container">
+  <br><br><br>
+  <div class="caja-ancha">
+
+    <form>
+    
+      <table class="table table-striped">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col" >Nombre</th>
+          <th scope="col" >Fecha ingreso</th>
+          <th scope="col" >Fecha alta</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let paciente of pacientes; let i = index" [routerLink]="['/paciente', paciente.id]">
+              <th>{{ i+1 }}</th>
+              <td>{{ paciente.nombre }}</td>
+              <td>{{ paciente.fechaIngreso }}</td>
+              <td>{{ paciente.fechaAlta}}</td>
+            </tr>
+        </tbody>
+      </table>
+    
+    </form>
+  
+  </div>
+</div>

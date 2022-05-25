@@ -1,1 +1,97 @@
-<p>inicio works!</p>
+<div>
+  <owl-carousel-o [options]="customOptions">
+    <ng-template carouselSlide>
+      <div class="caja" style="max-width: 18rem;">
+        <div class="widget-49">
+          <div class="widget-49-title-wrapper">
+              <div class="widget-49-date-warning">
+                  <span class="widget-49-icon"><i class="bi bi-person-fill"></i></span>
+              </div>
+              <div class="widget-49-meeting-info">
+                  <span class="widget-49-pro-title">13</span>
+                  <span class="widget-49-meeting-time">Pacientes</span>
+              </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>  
+
+    <ng-template carouselSlide>
+      <div class="caja" style="max-width: 18rem;">
+        <div class="widget-49">
+          <div class="widget-49-title-wrapper">
+              <div class="widget-49-date-warning">
+                  <span class="widget-49-icon"><i class="bi bi-people-fill"></i></span>
+              </div>
+              <div class="widget-49-meeting-info">
+                  <span class="widget-49-pro-title">800</span>
+                  <span class="widget-49-meeting-time">Pacientes totales</span>
+              </div>
+          </div>
+        </div>
+      </div>
+    </ng-template> 
+
+    <ng-template carouselSlide>
+      <div class="caja" style="max-width: 18rem;">
+        <div class="widget-49">
+          <div class="widget-49-title-wrapper">
+              <div class="widget-49-date-warning">
+                  <span class="widget-49-icon"><i class="bi bi-bell-fill"></i></span>
+              </div>
+              <div class="widget-49-meeting-info">
+                  <span class="widget-49-pro-title">3</span>
+                  <span class="widget-49-meeting-time">Alertas</span>
+              </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>  
+
+    <ng-template carouselSlide>
+      <div class="caja" style="max-width: 18rem;">
+        <div class="widget-49">
+          <div class="widget-49-title-wrapper">
+              <div class="widget-49-date-warning">
+                  <span class="widget-49-icon"><i class="bi bi-door-open-fill"></i></span>
+              </div>
+              <div class="widget-49-meeting-info">
+                  <span class="widget-49-pro-title">67</span>
+                  <span class="widget-49-meeting-time">Altas</span>
+              </div>
+          </div>
+        </div>
+      </div>
+    </ng-template> 
+
+    <ng-template carouselSlide>
+      <div class="caja" style="max-width: 18rem;">
+        <div class="widget-49">
+          <div class="widget-49-title-wrapper">
+              <div class="widget-49-date-warning">
+                  <span class="widget-49-icon"><i class="bi bi-activity"></i></span>
+              </div>
+              <div class="widget-49-meeting-info">
+                  <span class="widget-49-pro-title">6</span>
+                  <span class="widget-49-meeting-time">Monitorizados</span>
+              </div>
+          </div>
+        </div>
+      </div>
+    </ng-template> 
+  </owl-carousel-o>
+</div>
+
+<div class="container">
+  <div class="caja-ancha">
+    <div class="d-flex">
+      <div>
+        <h1>Avisos</h1>
+      </div>
+      <div class="ml-auto">
+        <h1><a [routerLink]="['/avisos']"><i class="bi bi-box-arrow-up-right"></i></a></h1>
+      </div>
+    </div>
+    <app-alerta></app-alerta>
+  </div>
+</div>
