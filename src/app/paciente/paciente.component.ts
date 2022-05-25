@@ -51,13 +51,13 @@ export class PacienteComponent implements OnInit {
   
   constructor(private route: ActivatedRoute, private mongoService: MongoService, private http: HttpClient, private servicioCom:ComunicacionComponentesService) {}
 
-  vocalizacion=3;
-  expresionFacial=3;
-  cambiosLenguajeCorporal=3;
-  cambiosComportamiento=3;
-  cambiosFisicologicos=3;
-  cambiosFisicos=3;
-  puntuacionTotal:number=2;
+  vocalizacion=0;
+  expresionFacial=0;
+  cambiosLenguajeCorporal=0;
+  cambiosComportamiento=0;
+  cambiosFisicologicos=0;
+  cambiosFisicos=0;
+  puntuacionTotal:number=0;
 
   ngOnInit() {
 
@@ -71,6 +71,26 @@ export class PacienteComponent implements OnInit {
     this.servicioCom.disparadorEnviarCambiosFisicos.subscribe(data =>{
       console.log(data.data.cambioFisico);
       this.cambiosFisicos=data.data.cambioFisico;
+    });
+
+    this.servicioCom.disparadorVocalizacion.subscribe(data =>{
+      console.log(data.data.vocalizacion);
+      this.vocalizacion=data.data.vocalizacion;
+    });
+
+    this.servicioCom.disparadorExpresionFacial.subscribe(data =>{
+      console.log(data.data.expresionFacial);
+      this.expresionFacial=data.data.expresionFacial;
+    });
+
+    this.servicioCom.disparadorLenguajeCorporal.subscribe(data =>{
+      console.log(data.data.lenguajeCorporal);
+      this.cambiosLenguajeCorporal=data.data.lenguajeCorporal;
+    });
+
+    this.servicioCom.disparadorFisicologicos.subscribe(data =>{
+      console.log(data.data.cambiosFisicologicos);
+      this.cambiosFisicologicos=data.data.cambiosFisicologicos;
     });
 
     this.refreshObject();

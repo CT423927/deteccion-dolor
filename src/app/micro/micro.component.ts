@@ -1,6 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import DecibelMeter from 'decibel-meter';
-import { buffer } from 'rxjs';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { ComunicacionComponentesService } from '../comunicacion-componentes.service';
+
 @Component({
   selector: 'app-micro',
   templateUrl: './micro.component.html',
@@ -8,11 +10,39 @@ import { buffer } from 'rxjs';
 })
 export class MicroComponent implements OnInit {
 
+
+
   aCtx: any;
-  constructor() { }
+  constructor(private http: HttpClient, private servicioCom:ComunicacionComponentesService) { }
+
+  valorVocalizacion;
+  valorCheckbox=false;
+  vocalizacion = new FormGroup({
+    vocalizacion: new FormControl('', Validators.required)
+  });
+
+  onCheckboxChange(e: any) {
+    this.valorCheckbox=e.target.checked;
+    console.log(e.target.checked);
+    console.log("CHECK"+this.valorCheckbox);
+  }
+
+  submit(){
+    this.valorVocalizacion = this.vocalizacion.value;
+    console.log(this.valorVocalizacion);
+
+    this.servicioCom.disparadorVocalizacion.emit({
+      data:this.valorVocalizacion 
+    });
+
+    this.http.post<any>('http://localhost:8080/vocalizacionManual',  {valorVocalizacion: this.valorVocalizacion} ).subscribe(data => {
+      next: (response) => console.log(response)
+    });
+    
+  }
 
   ngOnInit(): void {
-    var analyser;
+    /* var analyser;
     var microphone;
 
     navigator.mediaDevices.getUserMedia({audio: true}).then((stream) => {
@@ -43,7 +73,7 @@ export class MicroComponent implements OnInit {
 
         },10);
 
-    }
+    } */
     
 
   }
