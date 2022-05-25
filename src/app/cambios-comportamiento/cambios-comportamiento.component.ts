@@ -13,7 +13,7 @@ export class CambiosComportamientoComponent implements OnInit {
 
   constructor(private http: HttpClient, private servicioCom:ComunicacionComponentesService) { }
 
-  valorCambioComportamiento;
+  valorCambioComportamiento=0;
 
   cambioComportamiento = new FormGroup({
     cambioComportamiento: new FormControl('', Validators.required)

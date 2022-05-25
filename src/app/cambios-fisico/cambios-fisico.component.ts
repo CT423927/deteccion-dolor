@@ -16,7 +16,7 @@ export class CambiosFisicoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  valorCambioFisico;
+  valorCambioFisico=0;
 
   cambioFisico = new FormGroup({
     cambioFisico: new FormControl('', Validators.required)
