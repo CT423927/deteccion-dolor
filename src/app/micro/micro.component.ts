@@ -10,9 +10,6 @@ import { ComunicacionComponentesService } from '../comunicacion-componentes.serv
 })
 export class MicroComponent implements OnInit {
 
-
-
-  aCtx: any;
   constructor(private http: HttpClient, private servicioCom:ComunicacionComponentesService) { }
 
   valorVocalizacion;
@@ -40,42 +37,51 @@ export class MicroComponent implements OnInit {
     });
     
   }
-
+  averageVolume=0;
   ngOnInit(): void {
-    /* var analyser;
-    var microphone;
-
-    navigator.mediaDevices.getUserMedia({audio: true}).then((stream) => {
-            this.aCtx = new AudioContext();
-            analyser = this.aCtx.createAnalyser();
-            microphone = this.aCtx.createMediaStreamSource(stream);
-            microphone.connect(analyser);
-            analyser.connect(this.aCtx.destination);
-            // analyser.connect(aCtx.destination);
-            
-            process();
-      });
-
-    function process(){
-        setInterval(function(){
-            this.FFTData = new Float32Array(analyser.frequencyBinCount);
-            analyser.getFloatFrequencyData(this.FFTData);
-            //console.log(this.FFTData[0]);
-            analyser.minDecibels = -90;
-            analyser.maxDecibels = -10;
-            analyser.fftSize = 256;
-            var bufferLength = analyser.frequencyBinCount;
-            console.log(bufferLength);
-            var dataArray = new Uint8Array(bufferLength);
-            analyser.getByteFrequencyData(dataArray);
-            console.log(bufferLength[0]);
-            console.log(dataArray[0]);
-
-        },10);
-
-    } */
-    
-
+    (async () => {
+      let volumeCallback = null;
+      let volumeInterval = null;
+      const volumeVisualizer = document.getElementById('volume-visualizer')!;
+      // Initialize
+      try {
+        const audioStream = await navigator.mediaDevices.getUserMedia({
+          audio: {
+            echoCancellation: true
+          }
+        });
+        const audioContext = new AudioContext();
+        const audioSource = audioContext.createMediaStreamSource(audioStream);
+        const analyser = audioContext.createAnalyser();
+        analyser.fftSize = 512;
+        analyser.minDecibels = -127;
+        analyser.maxDecibels = 0;
+        analyser.smoothingTimeConstant = 0.4;
+        audioSource.connect(analyser);
+        const volumes = new Uint8Array(analyser.frequencyBinCount);
+        volumeCallback = () => {
+          analyser.getByteFrequencyData(volumes);
+          let volumeSum = 0;
+          for(const volume of volumes)
+            volumeSum += volume;
+          this.averageVolume = Math.round(volumeSum / volumes.length);
+          // Value range: 127 = analyser.maxDecibels - analyser.minDecibels;
+          console.log(this.averageVolume);
+          volumeVisualizer.style.setProperty('--volume', (this.averageVolume * 100 / 127) + '%');
+        };
+      } catch(e) {
+        console.error('Failed to initialize volume visualizer, simulating instead...', e);
+        // Simulation
+        //TODO remove in production!
+        let lastVolume = 50;
+        volumeCallback = () => {
+          const volume = Math.min(Math.max(Math.random() * 100, 0.8 * lastVolume), 1.2 * lastVolume);
+          lastVolume = volume;
+          volumeVisualizer.style.setProperty('--volume', volume + '%');
+        };
+      }
+      volumeInterval = setInterval(volumeCallback, 100);
+    })();
   }
 }
   

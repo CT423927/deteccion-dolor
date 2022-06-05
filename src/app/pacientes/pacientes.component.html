@@ -1,7 +1,7 @@
 <div class="container">
   <br><br><br>
   <div class="caja-ancha">
-
+    <input class="form-control mt-2 mb-2" type="text" [(ngModel)]="searchText"  (input)="Search()" placeholder="Buscar por nombre" /> 
     <form>
     
       <table class="table table-striped">
@@ -11,6 +11,7 @@
           <th scope="col" >Nombre</th>
           <th scope="col" >Fecha ingreso</th>
           <th scope="col" >Fecha alta</th>
+          <th scope="col" ></th>
         </tr>
         </thead>
         <tbody>
@@ -19,11 +20,24 @@
               <td>{{ paciente.nombre }}</td>
               <td>{{ paciente.fechaIngreso }}</td>
               <td>{{ paciente.fechaAlta}}</td>
+              <td><i class="bi bi-clipboard2-minus-fill" style="text-align: left;">&nbsp;&nbsp;</i><i class="bi bi-pencil-fill"></i>&nbsp;&nbsp;<i class="bi bi-trash-fill"></i></td>
             </tr>
         </tbody>
       </table>
     
     </form>
+
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+          <a class="page-link"tabindex="-1">Anterior</a>
+        </li>
+        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+        <li class="page-item">
+          <a class="page-link">Siguiente</a>
+        </li>
+      </ul>
+    </nav>
   
   </div>
 </div>

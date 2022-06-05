@@ -1,10 +1,10 @@
 export class Paciente {
     id?: any;
     nombre?: string;
-    fechaNacimiento?: Date;
+    fechaNacimiento?: string;
     sexo?: string;
     contacto?: string;
-    fechaIngreso?: Date;
-    fechaAlta?: Date;
+    fechaIngreso?: string;
+    fechaAlta?: string;
     ingresado?: Boolean
 }

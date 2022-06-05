@@ -1,4 +1,5 @@
 import { HttpClient } from '@angular/common/http';
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ComunicacionComponentesService } from '../comunicacion-componentes.service';
@@ -18,6 +19,9 @@ export class PulseraComponent implements OnInit {
 
   valorCambiosFisiologicos;
   valorCheckbox=false;
+  ritmoCardiaco=0;
+  requestTimeout: NodeJS.Timeout;
+
   cambiosFisiologicos = new FormGroup({
     cambiosFisiologicos: new FormControl('', Validators.required)
   });
@@ -26,17 +30,30 @@ export class PulseraComponent implements OnInit {
     this.valorCheckbox=e.target.checked;
     console.log(e.target.checked);
     console.log("CHECK"+this.valorCheckbox);
+    this.http.post<any>('http://localhost:8080/manualActivadoCambiosFisicologicos',  {bool: this.valorCheckbox} ).subscribe(data => {
+      next: (response) => console.log(response)
+    });
   }
 
   submit(){
-    this.valorCambiosFisiologicos = this.cambiosFisiologicos.value;
-    console.log(this.valorCambiosFisiologicos);
+    this.valorCambiosFisiologicos = this.cambiosFisiologicos.value.cambiosFisiologicos;
+    console.log("Valor fisiologicos" + this.valorCambiosFisiologicos);
 
     this.servicioCom.disparadorFisicologicos.emit({
       data:this.valorCambiosFisiologicos 
     });
+
     this.http.post<any>('http://localhost:8080/fisiologicosManual',  {valorCambiosFisiologicos: this.valorCambiosFisiologicos} ).subscribe(data => {
       next: (response) => console.log(response)
+    });
+    
+  }
+
+  obtenerRitmoCardiaco(): void {
+    this.http.get('http://localhost:8080/obtenerRitmoCardiaco').subscribe(data => {
+      console.log("ritmo" + data);
+      this.ritmoCardiaco=JSON.parse(data.toString());
+      this.requestTimeout = setTimeout(() => this.obtenerRitmoCardiaco(),5000);
     });
   }
 
@@ -51,6 +68,7 @@ export class PulseraComponent implements OnInit {
   }
   
   ngOnInit(): void {
+    this.obtenerRitmoCardiaco();
     this.loadExternalScript('assets/webapp.bundle.js')
   }
 

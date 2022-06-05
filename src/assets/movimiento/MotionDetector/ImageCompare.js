@@ -22,6 +22,8 @@
 	 */
 	App.ImageCompare = function() {
 		var sensitivity, temp1Canvas, temp1Context, temp2Canvas, temp2Context, topLeft, bottomRight;
+		var url = 'http://localhost:8080/cambiosLenguajeCorporal';
+		var data = {data: '1'};
 
 		/*
 		 * Initializes the object.
@@ -31,7 +33,7 @@
 		 *
 		 */
 		function initialize() {
-			sensitivity = 40;
+			sensitivity = 99;
 
 			if(!temp1Canvas) {
 				temp1Canvas = document.createElement('canvas');
@@ -60,9 +62,10 @@
 		 */
 		function compare(image1, image2, width, height) {
 			initialize();
-
 			if(!image1 || !image2) {
+				console.log("IGUales?");
 				return;
+			
 			}
 
 			temp1Context.clearRect(0,0,100000,100000);
@@ -85,6 +88,26 @@
 						setBottomRight(x,y);
 					}					
 				}
+			}
+
+			if((topLeft[0]!="Infinity") && (topLeft[0]!="Infinity") && (bottomRight[0]!=0) && (bottomRight[0]!=0) && document.getElementById("switchCheckMovimiento").checked==false){
+				fetch(url, {
+				method: 'POST', 
+				body: JSON.stringify(data), // data can be `string` or {object}!
+				headers:{
+					'Content-Type': 'application/json'
+				}
+				}).then(res => res.json()) 
+			} else {
+
+				fetch(url, {
+					method: 'POST', 
+					body: JSON.stringify({data: '0'}), // data can be `string` or {object}!
+					headers:{
+						'Content-Type': 'application/json'
+					}
+					}).then(res => res.json()) 
+
 			}
 
 			return {
@@ -115,7 +138,6 @@
 					}
 				}
 			}
-
 			return matches;
 		}
 

@@ -15,6 +15,7 @@ export class MovimientoComponent implements OnInit {
 
   valorLenguajeCorporal;
   valorCheckbox=false;
+  
   lenguajeCorporal = new FormGroup({
     lenguajeCorporal: new FormControl('', Validators.required)
   });
@@ -23,6 +24,9 @@ export class MovimientoComponent implements OnInit {
     this.valorCheckbox=e.target.checked;
     console.log(e.target.checked);
     console.log("CHECK"+this.valorCheckbox);
+    this.http.post<any>('http://localhost:8080/manualActivadoCambiosLenguajeCorporal',  {bool: this.valorCheckbox} ).subscribe(data => {
+      next: (response) => console.log(response)
+    });
   }
 
   submit(){
@@ -46,6 +50,7 @@ export class MovimientoComponent implements OnInit {
     script.async = true;
     script.defer = true;
     body.appendChild(script);
+    console.log(script);
   }
   
   ngOnInit(): void {

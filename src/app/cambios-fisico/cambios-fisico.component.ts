@@ -17,6 +17,7 @@ export class CambiosFisicoComponent implements OnInit {
   }
 
   valorCambioFisico=0;
+  alerta=false;
 
   cambioFisico = new FormGroup({
     cambioFisico: new FormControl('', Validators.required)
@@ -35,6 +36,8 @@ export class CambiosFisicoComponent implements OnInit {
     this.http.post<any>('http://localhost:8080/cambiosFisicos',  {cambioFisico: this.valorCambioFisico} ).subscribe(data => {
       next: (response) => console.log(response)
     });
+    this.alerta=true;
+
   }
   
   changeCambioFisico(e) {

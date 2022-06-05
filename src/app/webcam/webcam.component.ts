@@ -84,6 +84,9 @@ export class WebcamComponent implements OnInit {
   }
 
   async detect_Faces() {
+    if(this.valorCheckbox==false){
+
+    }
     this.elRef.nativeElement.querySelector('video').addEventListener('play', async () => {
      this.canvas = await faceapi.createCanvasFromMedia(this.videoInput);
      this.canvasEl = this.canvasRef.nativeElement;
@@ -99,6 +102,7 @@ export class WebcamComponent implements OnInit {
         height: this.videoInput.height,
      };
      faceapi.matchDimensions(this.canvas, this.displaySize);
+     console.log("FUERA");
      setInterval(async () => {
         this.detection = await faceapi.detectAllFaces(this.videoInput,  new  faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions();
         this.resizedDetections = faceapi.resizeResults(
@@ -109,7 +113,8 @@ export class WebcamComponent implements OnInit {
         faceapi.draw.drawDetections(this.canvas, this.resizedDetections);
         faceapi.draw.drawFaceLandmarks(this.canvas, this.resizedDetections);
         faceapi.draw.drawFaceExpressions(this.canvas, this.resizedDetections);
-        /* if(this.detection[0]!=undefined){
+        console.log(this.valorCheckbox);
+        if(this.detection[0]!=undefined && this.valorCheckbox==false){
           this.http.post<any>('http://localhost:8080/emociones',  {
             angry: this.detection[0].expressions.angry,
             disgusted: this.detection[0].expressions.disgusted,
@@ -120,12 +125,9 @@ export class WebcamComponent implements OnInit {
             surprised: this.detection[0].expressions.surprised,
           } ).subscribe(data => {
           next: (response) => console.log(response)
-        });
-        } */
-        
-    }, 100);
-
-
+         }); 
+        } 
+    }, 2000);
     });
     }
 }

@@ -105,3 +105,32 @@
 .frb.frb-default input[type="checkbox"]:empty:checked ~ label span.frb-description {
 	color: #999;
 }
+
+.microfono {
+    --volume: 0%;
+    position: relative;
+    width: 200px;
+    height: 20px;
+    margin: 50px;
+    background-color: #DDD;
+  }
+  
+  .microfono::before {
+     content: '';
+     position: absolute;
+     top: 0;
+     bottom: 0;
+     left: 0;
+     width: var(--volume);
+     background-color: green;
+     transition: width 100ms linear;
+  }
+  
+  button {
+    margin-left: 50px;
+  }
+  
+  h3 {
+    margin: 20px;
+    font-family: sans-serif;
+  }

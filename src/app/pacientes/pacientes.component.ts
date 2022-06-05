@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { Paciente } from '../models/paciente.model';
 import { MongoService } from '../services/mongo.service';
@@ -13,13 +14,15 @@ export class PacientesComponent implements OnInit {
   currentPaciente: Paciente = {};
   currentIndex = -1;
   nombre = '';
+  num;
+  searchText = "";
 
-  constructor(private mongoService: MongoService) { }
+  constructor(private mongoService: MongoService) { 
+  }
 
   ngOnInit(): void {
-
     this.retrievePacientes();
-
+    console.log("JJE·"+this.pacientes);
   }
 
   retrievePacientes(): void {
@@ -27,7 +30,17 @@ export class PacientesComponent implements OnInit {
       .subscribe({
         next: (data) => {
           this.pacientes = data;
-          console.log(data);
+          this.num= data.length;
+          for(let paciente of this.pacientes){
+            paciente.fechaAlta=paciente.fechaAlta.split('T')[0];
+            paciente.fechaIngreso=paciente.fechaIngreso.split('T')[0];
+            if(paciente.fechaAlta.split('-')[0]=='0000'){
+              console.log("PACIENTE FECHA 0000");
+              paciente.fechaAlta='';
+              console.log(paciente);
+            }
+          }
+          this.pacientes = data;
         },
         error: (e) => console.error(e)
       });
@@ -63,5 +76,18 @@ export class PacientesComponent implements OnInit {
         error: (e) => console.error(e)
       });
   }
+  Search(){
+    if(this.searchText!= ""){
+      let searchValue = this.searchText.toLocaleUpperCase();
+      this.pacientes = this.pacientes.filter(object => {
+        console.log("NOMBRE"+ object['nombre']);
+        return object['nombre'].includes(searchValue)
+      });
+    } else{
+      this.retrievePacientes();
+    } 
+
+  }
+
 
 }

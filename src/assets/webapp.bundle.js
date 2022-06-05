@@ -10,6 +10,7 @@
             var revLookup = [];
             var Arr = typeof Uint8Array !== 'undefined' ? Uint8Array : Array;
             var inited = false;
+
             function init () {
               inited = true;
               var code = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
@@ -7666,12 +7667,26 @@
               log('Heart Rate Monitor (single-shot)');
               log('Result:', await miband.hrmRead());
 
-              log('Heart Rate Monitor (continuous for 30 sec)...');
+              log('Heart Rate Monitor');
               miband.on('heart_rate', (rate) => {
                 log('Heart Rate:', rate);
+                if(document.getElementById("switchCheckMovimiento").checked==false){
+                  $.ajax({
+                    url : 'http://localhost:8080/cambiosFisicologicos',
+                    data : {rate:rate}, 
+                    method : 'POST', //en este caso
+                    dataType : 'json',
+                    success : function(response){
+                           console.log("Success");
+                    },
+                    error: function(error){
+                           console.log(error);
+                    }
+                  });
+                }
               });
               await miband.hrmStart();
-              await delay(30000);
+              await delay(3600000);
               await miband.hrmStop();
 
               //log('RAW data (no decoding)...')
@@ -7690,8 +7705,7 @@
 
             function log$1() {
               document.querySelector('main').style.display = 'block';
-
-              output.innerHTML += [...arguments].join(' ') + '\n';
+              console.log([...arguments].join(' '));
             }
 
             async function scan() {

@@ -22,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CambiosComportamientoComponent } from './cambios-comportamiento/cambios-comportamiento.component';
 import { CambiosFisicoComponent } from './cambios-fisico/cambios-fisico.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxGaugeModule } from 'ngx-gauge';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     CarouselModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxGaugeModule
   ],
   providers: [],
   bootstrap: [AppComponent],

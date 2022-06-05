@@ -8,8 +8,8 @@
                   <span class="widget-49-icon"><i class="bi bi-person-fill"></i></span>
               </div>
               <div class="widget-49-meeting-info">
-                  <span class="widget-49-pro-title">13</span>
-                  <span class="widget-49-meeting-time">Pacientes</span>
+                  <span class="widget-49-pro-title">{{numIngresados}}</span>
+                  <span class="widget-49-meeting-time">Ingresados</span>
               </div>
           </div>
         </div>
@@ -24,7 +24,7 @@
                   <span class="widget-49-icon"><i class="bi bi-people-fill"></i></span>
               </div>
               <div class="widget-49-meeting-info">
-                  <span class="widget-49-pro-title">800</span>
+                  <span class="widget-49-pro-title">{{numTotal}}</span>
                   <span class="widget-49-meeting-time">Pacientes totales</span>
               </div>
           </div>
@@ -40,8 +40,8 @@
                   <span class="widget-49-icon"><i class="bi bi-bell-fill"></i></span>
               </div>
               <div class="widget-49-meeting-info">
-                  <span class="widget-49-pro-title">3</span>
-                  <span class="widget-49-meeting-time">Alertas</span>
+                  <span class="widget-49-pro-title">{{numAvisos}}</span>
+                  <span class="widget-49-meeting-time">Avisos</span>
               </div>
           </div>
         </div>
@@ -56,7 +56,7 @@
                   <span class="widget-49-icon"><i class="bi bi-door-open-fill"></i></span>
               </div>
               <div class="widget-49-meeting-info">
-                  <span class="widget-49-pro-title">67</span>
+                  <span class="widget-49-pro-title">{{numAltas}}</span>
                   <span class="widget-49-meeting-time">Altas</span>
               </div>
           </div>
@@ -72,7 +72,7 @@
                   <span class="widget-49-icon"><i class="bi bi-activity"></i></span>
               </div>
               <div class="widget-49-meeting-info">
-                  <span class="widget-49-pro-title">6</span>
+                  <span class="widget-49-pro-title">{{numMonitorizados}}</span>
                   <span class="widget-49-meeting-time">Monitorizados</span>
               </div>
           </div>
@@ -89,9 +89,10 @@
         <h1>Avisos</h1>
       </div>
       <div class="ml-auto">
-        <h1><a [routerLink]="['/avisos']"><i class="bi bi-box-arrow-up-right"></i></a></h1>
+        <h3><a [routerLink]="['/avisos']"><i class="bi bi-box-arrow-up-right"></i></a></h3>
       </div>
     </div>
     <app-alerta></app-alerta>
   </div>
 </div>
+<br><br><br><br>
