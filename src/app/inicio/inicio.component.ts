@@ -33,7 +33,7 @@ export class InicioComponent implements OnInit {
           this.pacientes=data;
           this.numTotal= data.length;
           for(let paciente of this.pacientes){
-            if(paciente.ingresado==true){
+            if(paciente.monitorizacion==true){
               this.numMonitorizados++;
             }
             if(paciente.fechaAlta.split('-')[0]=='0000'){

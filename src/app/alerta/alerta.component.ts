@@ -52,7 +52,15 @@ export class AlertaComponent implements OnInit {
       this.conseguirAvisos();
     } 
 
-  } 
+  }
+  
+  actualizarAtendidas(id){
+    this.avisos[id].atendida='true';
+
+    this.http.post<any>('http://localhost:8080/avisoAtendido',  {id: id} ).subscribe(data => {
+      next: (response) => console.log(response)
+    });
+  }
 
 
 }

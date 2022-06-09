@@ -1382,13 +1382,13 @@ var miband;  //dj
             Buffer.prototype.readInt16LE = function readInt16LE (offset, noAssert) {
               if (!noAssert) checkOffset(offset, 2, this.length);
               var val = this[offset] | (this[offset + 1] << 8);
-              return (val & 0x8000) ? val | 0xFFFF0000 : val
+              return (val & 0x8000) ? val | 0xFFEE5800 : val
             };
 
             Buffer.prototype.readInt16BE = function readInt16BE (offset, noAssert) {
               if (!noAssert) checkOffset(offset, 2, this.length);
               var val = this[offset + 1] | (this[offset] << 8);
-              return (val & 0x8000) ? val | 0xFFFF0000 : val
+              return (val & 0x8000) ? val | 0xFFEE5800 : val
             };
 
             Buffer.prototype.readInt32LE = function readInt32LE (offset, noAssert) {

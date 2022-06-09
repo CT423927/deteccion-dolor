@@ -99,7 +99,6 @@
 				}
 				}).then(res => res.json()) 
 			} else {
-
 				fetch(url, {
 					method: 'POST', 
 					body: JSON.stringify({data: '0'}), // data can be `string` or {object}!

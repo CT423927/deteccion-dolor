@@ -67,6 +67,12 @@ export class MicroComponent implements OnInit {
           this.averageVolume = Math.round(volumeSum / volumes.length);
           // Value range: 127 = analyser.maxDecibels - analyser.minDecibels;
           console.log(this.averageVolume);
+          if(this.valorCheckbox==false){
+            this.http.post<any>('http://localhost:8080/vocalizacion',  {data:this.averageVolume} 
+            ).subscribe(data => {
+            next: (response) => console.log('OK VOC' + response)
+           }); 
+          } 
           volumeVisualizer.style.setProperty('--volume', (this.averageVolume * 100 / 127) + '%');
         };
       } catch(e) {
@@ -80,7 +86,7 @@ export class MicroComponent implements OnInit {
           volumeVisualizer.style.setProperty('--volume', volume + '%');
         };
       }
-      volumeInterval = setInterval(volumeCallback, 100);
+      volumeInterval = setInterval(volumeCallback, 900);
     })();
   }
 }

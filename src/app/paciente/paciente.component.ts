@@ -27,10 +27,10 @@ export class PacienteComponent implements OnInit {
 
 
   thresholdConfig = {
-    '0': {color: '#C8E6C9'},
-    '3': {color: '#FFF9C4'},
-    '8': {color: '#FFE0B2'},
-    '14': {color: '#FFCDD2'},
+    '0': {color: '#19e47e'},
+    '3': {color: '#FFEE58'},
+    '8': {color: '#ff9d4d'},
+    '14': {color: '#E74C3C'},
   };
   markerConfig = {
     "0": { color: '#C8E6C9', size: 10, label: '0', type: 'line'},
@@ -133,6 +133,7 @@ export class PacienteComponent implements OnInit {
 
     this.refreshObject();
     this.conseguirAvisosPaciente();
+    this.refreshObjectAuto();
 
   }
 
@@ -148,7 +149,7 @@ export class PacienteComponent implements OnInit {
     this.http.get('http://localhost:8080/obtenerPuntuacionFinal').subscribe(data => {
       console.log("PUNTUACION TOTAL" + data);
       this.puntuacionTotal=JSON.parse(data.toString());
-      this.requestTimeout = setTimeout(() => this.refreshObjectAuto(),10000);
+      this.requestTimeout = setTimeout(() => this.refreshObjectAuto(),4000);
     });
   }
 
