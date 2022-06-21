@@ -127,7 +127,7 @@ export class WebcamComponent implements OnInit {
           next: (response) => console.log(response)
          }); 
         } 
-    }, 2000);
+    }, 3000);
     });
     }
 }

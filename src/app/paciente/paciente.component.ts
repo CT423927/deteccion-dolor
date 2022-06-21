@@ -27,7 +27,7 @@ export class PacienteComponent implements OnInit {
 
 
   thresholdConfig = {
-    '0': {color: '#19e47e'},
+    '0': {color: '#00c942'},
     '3': {color: '#FFEE58'},
     '8': {color: '#ff9d4d'},
     '14': {color: '#E74C3C'},
@@ -73,7 +73,7 @@ export class PacienteComponent implements OnInit {
   json;
   gaugeValue;
   gaugeType = "semi";
-  gaugeLabel = "puntuación";
+  gaugeLabel = "Nivel dolor";
   avisos;
 
   ngOnInit() {

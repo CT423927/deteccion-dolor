@@ -86,7 +86,7 @@ export class MicroComponent implements OnInit {
           volumeVisualizer.style.setProperty('--volume', volume + '%');
         };
       }
-      volumeInterval = setInterval(volumeCallback, 900);
+      volumeInterval = setInterval(volumeCallback, 2000);
     })();
   }
 }
