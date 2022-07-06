@@ -43,6 +43,7 @@ export class AlertaComponent implements OnInit {
 
       console.log(this.selected + " ------- valor priodidad")
       let searchValue = this.searchText.toLocaleUpperCase();
+      
       this.avisos = this.avisosOriginal.filter(object => {
         console.log(this.avisosOriginal);
         let paciente = object['paciente'].includes(searchValue) && object['color'].includes(this.selected);

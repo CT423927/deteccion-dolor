@@ -15,6 +15,7 @@ export class MovimientoComponent implements OnInit {
 
   valorLenguajeCorporal;
   valorCheckbox=false;
+  alerta=false;
   
   lenguajeCorporal = new FormGroup({
     lenguajeCorporal: new FormControl('', Validators.required)
@@ -40,6 +41,7 @@ export class MovimientoComponent implements OnInit {
     this.http.post<any>('http://localhost:8080/lenguajeCorporalManual',  {valorLenguajeCorporal: this.valorLenguajeCorporal} ).subscribe(data => {
       next: (response) => console.log(response)
     });
+    this.alerta=true;
   }
 
   public loadExternalScript(url: string) {

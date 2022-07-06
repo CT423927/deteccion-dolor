@@ -13,6 +13,7 @@ export class MicroComponent implements OnInit {
   constructor(private http: HttpClient, private servicioCom:ComunicacionComponentesService) { }
 
   valorVocalizacion;
+  alerta=false;
   valorCheckbox=false;
   vocalizacion = new FormGroup({
     vocalizacion: new FormControl('', Validators.required)
@@ -35,6 +36,7 @@ export class MicroComponent implements OnInit {
     this.http.post<any>('http://localhost:8080/vocalizacionManual',  {valorVocalizacion: this.valorVocalizacion} ).subscribe(data => {
       next: (response) => console.log(response)
     });
+    this.alerta=true;
     
   }
   averageVolume=0;

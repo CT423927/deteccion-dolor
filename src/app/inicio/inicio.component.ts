@@ -20,6 +20,7 @@ export class InicioComponent implements OnInit {
   numAltas=0;
   numMonitorizados=0;
   numAvisos=0;
+  avisos;
 
   ngOnInit(): void {
     this.retrievePacientes();
@@ -50,9 +51,14 @@ export class InicioComponent implements OnInit {
 
   conseguirAvisos(){
     this.http.get('http://localhost:8080/obtenerAlertas').subscribe(data => {
-      console.log("avisos" + data);
-      console.log("avisos" + Object.keys(data).length);
-      this.numAvisos=Object.keys(data).length;
+      this.avisos=data;
+          for(let aviso of this.avisos){
+            console.log(aviso);
+            if(aviso.atendida=='false'){
+              this.numAvisos++;
+            }
+            
+          }
     });
   }
    

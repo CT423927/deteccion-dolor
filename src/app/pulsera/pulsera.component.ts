@@ -21,6 +21,7 @@ export class PulseraComponent implements OnInit {
   valorCheckbox=false;
   ritmoCardiaco=0;
   requestTimeout: NodeJS.Timeout;
+  alerta=false;
 
   cambiosFisiologicos = new FormGroup({
     cambiosFisiologicos: new FormControl('', Validators.required)
@@ -46,6 +47,7 @@ export class PulseraComponent implements OnInit {
     this.http.post<any>('http://localhost:8080/fisiologicosManual',  {valorCambiosFisiologicos: this.valorCambiosFisiologicos} ).subscribe(data => {
       next: (response) => console.log(response)
     });
+    this.alerta=true;
     
   }
 
@@ -53,7 +55,8 @@ export class PulseraComponent implements OnInit {
     this.http.get('http://localhost:8080/obtenerRitmoCardiaco').subscribe(data => {
       console.log("ritmo" + data);
       this.ritmoCardiaco=JSON.parse(data.toString());
-      this.requestTimeout = setTimeout(() => this.obtenerRitmoCardiaco(),5000);
+      this.requestTimeout = setTimeout(() => this.obtenerRitmoCardiaco(),2000);
+      console.log(this.ritmoCardiaco + "RECIBIDOOOOO");
     });
   }
 

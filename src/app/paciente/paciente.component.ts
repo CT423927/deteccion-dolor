@@ -25,7 +25,6 @@ declare const scan: any;
 
 export class PacienteComponent implements OnInit {
 
-
   thresholdConfig = {
     '0': {color: '#00c942'},
     '3': {color: '#FFEE58'},
@@ -75,11 +74,11 @@ export class PacienteComponent implements OnInit {
   gaugeType = "semi";
   gaugeLabel = "Nivel dolor";
   avisos;
+  avisosOriginal;
 
   ngOnInit() {
     
     this.getTutorial(this.route.snapshot.params["id"]);
-    
     /* this.refreshObjectAuto(); */
 
     this.servicioCom.disparadorEnviar.subscribe(data =>{
@@ -162,6 +161,11 @@ export class PacienteComponent implements OnInit {
           this.currentPaciente = data;
           this.currentPaciente.fechaNacimiento=this.currentPaciente.fechaNacimiento.split('T')[0];
           this.currentPaciente.fechaAlta=this.currentPaciente.fechaAlta.split('T')[0];
+          console.log("FEXHA ALTA" + this.currentPaciente.fechaAlta);
+          if(this.currentPaciente.fechaAlta.includes('0000')){
+            this.currentPaciente.fechaAlta="";
+            console.log("FEXHA ALTA" + this.currentPaciente.fechaAlta);
+          }
           this.currentPaciente.fechaIngreso=this.currentPaciente.fechaIngreso.split('T')[0];
           console.log(data);
         },
@@ -172,6 +176,17 @@ export class PacienteComponent implements OnInit {
   conseguirAvisosPaciente(){
     this.http.get('http://localhost:8080/obtenerAlertas').subscribe(data => {
       this.avisos=data;
+      
+      for(let paciente of this.avisos){
+        let split1 = paciente.fecha.split('T');
+        let dia = split1[0];
+        let split2= split1[1].split('.');
+    
+        let nuevaFecha=dia.concat(' ', split2[0]);
+        paciente.fecha=nuevaFecha;
+
+        console.log(paciente.fecha);
+      }
       this.avisos = this.avisos.filter(object => {
         let paciente = object['paciente'].includes(this.currentPaciente.nombre);
         return paciente;
@@ -191,6 +206,14 @@ export class PacienteComponent implements OnInit {
     navSpeed: 700,
     nav: false,
     items:4
+  }
+
+  actualizarAtendidas(id){
+    this.avisos[id].atendida='true';
+
+    this.http.post<any>('http://localhost:8080/avisoAtendido',  {id: id} ).subscribe(data => {
+      next: (response) => console.log(response)
+    });
   }
 
 }
